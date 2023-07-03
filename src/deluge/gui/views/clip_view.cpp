@@ -37,7 +37,7 @@ unsigned int ClipView::getMaxZoom() {
 	return currentSong->currentClip->getMaxZoom();
 }
 
-uint32_t ClipView::getMaxLength() {
+int32_t ClipView::getMaxEnd() {
 	return currentSong->currentClip->getMaxLength();
 }
 

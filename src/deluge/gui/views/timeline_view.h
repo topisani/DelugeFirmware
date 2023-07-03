@@ -31,10 +31,11 @@ public:
 	void scrollFinished();
 
 	virtual unsigned int getMaxZoom() = 0;
-	virtual bool calculateZoomPinSquares(uint32_t oldScroll, uint32_t newScroll, uint32_t newZoom,
+	virtual bool calculateZoomPinSquares(int32_t oldScroll, int32_t newScroll, uint32_t newZoom,
 	                                     uint32_t oldZoom); // Returns false if no animation needed
-	virtual uint32_t getMaxLength() = 0;
-	virtual bool setupScroll(uint32_t oldScroll); // Returns false if no animation needed
+	virtual int32_t getMaxEnd() = 0;
+	virtual int32_t getMinStart() { return 0; }
+	virtual bool setupScroll(int32_t oldScroll); // Returns false if no animation needed
 	virtual int getNavSysId() { return NAVIGATION_CLIP; }
 
 	virtual void tellMatrixDriverWhichRowsContainSomethingZoomable() {
@@ -45,9 +46,9 @@ public:
 	void displayZoomLevel(bool justPopup = false);
 	int horizontalEncoderAction(int offset);
 	void displayScrollPos();
-	void displayNumberOfBarsAndBeats(uint32_t number, uint32_t quantization, bool countFromOne,
+	void displayNumberOfBarsAndBeats(int32_t number, uint32_t quantization, bool countFromOne,
 	                                 char const* tooLongText);
-	void initiateXScroll(uint32_t newXScroll, int numSquaresToScroll = displayWidth);
+	void initiateXScroll(int32_t newXScroll, int numSquaresToScroll = displayWidth);
 	bool zoomToMax(bool inOnly = false);
 	void initiateXZoom(int zoomMagnitude, int32_t newScroll, uint32_t oldZoom);
 	void midiLearnFlash();

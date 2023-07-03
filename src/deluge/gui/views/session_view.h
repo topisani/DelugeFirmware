@@ -40,7 +40,7 @@ public:
 
 	int buttonAction(int x, int y, bool on, bool inCardRoutine);
 	int padAction(int x, int y, int velocity);
-	int horizontalEncoderAction(int offset);
+	int horizontalEncoderAction(int offset) ;
 	int verticalEncoderAction(int offset, bool inCardRoutine);
 	bool renderSidebar(uint32_t whichRows, uint8_t image[][displayWidth + sideBarWidth][3],
 	                   uint8_t occupancyMask[][displayWidth + sideBarWidth]);
@@ -55,17 +55,17 @@ public:
 	int getClipPlaceOnScreen(Clip* clip);
 	void drawStatusSquare(uint8_t yDisplay, uint8_t thisImage[][3]);
 	void drawSectionSquare(uint8_t yDisplay, uint8_t thisImage[][3]);
-	bool calculateZoomPinSquares(uint32_t oldScroll, uint32_t newScroll, uint32_t newZoom, uint32_t oldZoom);
-	uint32_t getMaxLength();
-	bool setupScroll(uint32_t oldScroll);
+	bool calculateZoomPinSquares(int32_t oldScroll, int32_t newScroll, uint32_t newZoom, uint32_t oldZoom);
+	int32_t getMaxEnd() ;
+	bool setupScroll(int32_t oldScroll);
 	uint32_t getClipLocalScroll(Clip* loopable, uint32_t overviewScroll, uint32_t xZoom);
 	void flashPlayRoutine();
 
-	void modEncoderButtonAction(uint8_t whichModEncoder, bool on);
-	void modButtonAction(uint8_t whichButton, bool on);
-	void selectEncoderAction(int8_t offset);
-	int timerCallback();
-	void noteRowChanged(InstrumentClip* clip, NoteRow* noteRow);
+	void modEncoderButtonAction(uint8_t whichModEncoder, bool on) ;
+	void modButtonAction(uint8_t whichButton, bool on) ;
+	void selectEncoderAction(int8_t offset) ;
+	int timerCallback() ;
+	void noteRowChanged(InstrumentClip* clip, NoteRow* noteRow) ;
 	void setLedStates();
 	void editNumRepeatsTilLaunch(int offset);
 	uint32_t getGreyedOutRowsNotRepresentingOutput(Output* output);

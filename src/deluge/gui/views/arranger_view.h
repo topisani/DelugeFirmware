@@ -54,7 +54,7 @@ public:
 	               uint8_t thisOccupancyMask[], int renderWidth);
 	void editPadAction(int x, int y, bool on);
 	int horizontalEncoderAction(int offset);
-	uint32_t getMaxLength();
+	int32_t getMaxEnd();
 	unsigned int getMaxZoom();
 	void graphicsRoutine();
 	int getNavSysId() { return NAVIGATION_ARRANGEMENT; }

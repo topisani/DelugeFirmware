@@ -1700,7 +1700,7 @@ void SessionView::rowNeedsRenderingDependingOnSubMode(int yDisplay) {
 	}
 }
 
-bool SessionView::calculateZoomPinSquares(uint32_t oldScroll, uint32_t newScroll, uint32_t newZoom, uint32_t oldZoom) {
+bool SessionView::calculateZoomPinSquares(int32_t oldScroll, int32_t newScroll, uint32_t newZoom, uint32_t oldZoom) {
 
 	bool anyToDo = false;
 
@@ -1727,13 +1727,13 @@ int SessionView::getClipPlaceOnScreen(Clip* clip) {
 	return currentSong->sessionClips.getIndexForClip(clip) - currentSong->songViewYScroll;
 }
 
-uint32_t SessionView::getMaxLength() {
+int32_t SessionView::getMaxEnd() {
 	return currentSong->getLongestClip(true, false)->loopLength;
 }
 
 extern bool pendingUIRenderingLock;
 
-bool SessionView::setupScroll(uint32_t oldScroll) {
+bool SessionView::setupScroll(int32_t oldScroll) {
 
 	// Ok I'm sorta pretending that this is definitely previously false, though only one caller of this function actually
 	// checks for that. Should be ok-ish though...

@@ -840,6 +840,15 @@ int64_t AudioClip::getSamplesFromTicks(int32_t ticks) {
 	}
 }
 
+int32_t AudioClip::getTicksFromSamples(int64_t samples) {
+	if (recorder) {
+		return samples / playbackHandler.getTimePerInternalTickFloat();
+	}
+	else {
+		return samples * loopLength / sampleHolder.getDurationInSamples(true);
+	}
+}
+
 // Only call this if you know there's a Sample
 void AudioClip::getScrollAndZoomInSamples(int32_t xScroll, int32_t xZoom, int64_t* xScrollSamples,
                                           int64_t* xZoomSamples) {

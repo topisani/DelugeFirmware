@@ -32,7 +32,8 @@ public:
 	                    uint8_t occupancyMask[][displayWidth + sideBarWidth], bool drawUndefinedArea = true);
 	bool renderSidebar(uint32_t whichRows, uint8_t image[][displayWidth + sideBarWidth][3],
 	                   uint8_t occupancyMask[][displayWidth + sideBarWidth]);
-	bool setupScroll(uint32_t oldScroll);
+	bool setupScroll(int32_t oldScroll);
+	int32_t getMinStart();
 	void transitionToSessionView();
 	void tellMatrixDriverWhichRowsContainSomethingZoomable();
 	bool supportsTriplets() { return false; }
@@ -49,7 +50,7 @@ public:
 	void selectEncoderAction(int8_t offset);
 	int verticalEncoderAction(int offset, bool inCardRoutine);
 	int timerCallback();
-	uint32_t getMaxLength();
+	int32_t getMaxEnd();
 	unsigned int getMaxZoom();
 
 #if HAVE_OLED
@@ -60,7 +61,8 @@ private:
 	void needsRenderingDependingOnSubMode();
 	int lastTickSquare;
 	bool mustRedrawTickSquares;
-	bool endMarkerVisible;
+	bool markerVisible;
+	bool markerIsEnd;
 	bool blinkOn;
 };
 

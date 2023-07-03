@@ -2474,7 +2474,7 @@ int ArrangerView::horizontalEncoderAction(int offset) {
 				int scrollAmount = offset * currentSong->xZoom[NAVIGATION_ARRANGEMENT];
 
 				// If expanding, make sure we don't exceed length limit
-				if (offset >= 0 && getMaxLength() > MAX_SEQUENCE_LENGTH - scrollAmount) return ACTION_RESULT_DEALT_WITH;
+				if (offset >= 0 && getMaxEnd() > MAX_SEQUENCE_LENGTH - scrollAmount) return ACTION_RESULT_DEALT_WITH;
 
 				int actionType = (offset >= 0) ? ACTION_ARRANGEMENT_TIME_EXPAND : ACTION_ARRANGEMENT_TIME_CONTRACT;
 
@@ -2592,7 +2592,7 @@ int ArrangerView::horizontalScrollOneSquare(int direction) {
 	if (newXScroll < 0) newXScroll = 0;
 
 	// Make sure we don't scroll too far right
-	int32_t maxScroll = getMaxLength() - 1 + xZoom; // Add one extra square, and round down
+	int32_t maxScroll = getMaxEnd() - 1 + xZoom; // Add one extra square, and round down
 	if (maxScroll < 0) maxScroll = 0;
 
 	int32_t screenWidth = xZoom << displayWidthMagnitude;
@@ -2878,9 +2878,9 @@ bool ArrangerView::initiateXScroll(int32_t newScrollPos) {
 	return true;
 }
 
-uint32_t ArrangerView::getMaxLength() {
+int32_t ArrangerView::getMaxEnd() {
 
-	uint32_t maxEndPos = 0;
+	int32_t maxEndPos = 0;
 	for (Output* thisOutput = currentSong->firstOutput; thisOutput; thisOutput = thisOutput->next) {
 
 		if (thisOutput->recordingInArrangement) {
@@ -2899,7 +2899,7 @@ uint32_t ArrangerView::getMaxLength() {
 }
 
 unsigned int ArrangerView::getMaxZoom() {
-	unsigned int maxLength = getMaxLength();
+	unsigned int maxLength = getMaxEnd();
 
 	if (maxLength < (DEFAULT_ARRANGER_ZOOM << currentSong->insideWorldTickMagnitude) * displayWidth)
 		return (DEFAULT_ARRANGER_ZOOM << currentSong->insideWorldTickMagnitude);
