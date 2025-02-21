@@ -78,6 +78,8 @@ public:
 	bool previouslyIgnoredNoteOff;
 	uint8_t whichExpressionSourcesCurrentlySmoothing;
 	uint8_t whichExpressionSourcesFinalValueChanged;
+	bool sustainedByPedal;
+	bool pressedAfterSostenuto;
 
 	uint32_t orderSounded;
 

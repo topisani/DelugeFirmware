@@ -118,7 +118,7 @@ const uint32_t mutePadActionUIModes[] = {UI_MODE_NOTES_PRESSED, UI_MODE_AUDITION
 
 const uint32_t verticalScrollUIModes[] = {UI_MODE_NOTES_PRESSED, UI_MODE_AUDITIONING, UI_MODE_RECORD_COUNT_IN, 0};
 
-constexpr int32_t kNumNonGlobalParamsForAutomation = 60;
+constexpr int32_t kNumNonGlobalParamsForAutomation = 62;
 constexpr int32_t kNumGlobalParamsForAutomation = 26;
 constexpr int32_t kParamNodeWidth = 3;
 
@@ -207,6 +207,9 @@ const std::array<std::pair<params::Kind, ParamType>, kNumNonGlobalParamsForAutom
     {params::Kind::UNPATCHED_SOUND, params::UNPATCHED_STUTTER_RATE},
     // Compressor Threshold
     {params::Kind::UNPATCHED_SOUND, params::UNPATCHED_COMPRESSOR_THRESHOLD},
+    // Sustain / Sostenuto pedals
+    {params::Kind::UNPATCHED_SOUND, params::UNPATCHED_PEDAL_SUSTAIN},
+    {params::Kind::UNPATCHED_SOUND, params::UNPATCHED_PEDAL_SOSTENUTO},
 }};
 
 // global FX - sorted in the order that Parameters are scrolled through on the display

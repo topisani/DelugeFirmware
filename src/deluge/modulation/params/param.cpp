@@ -216,6 +216,8 @@ char const* getParamDisplayName(Kind kind, int32_t p) {
 		    [UNPATCHED_ARP_SEQUENCE_LENGTH - unc] = STRING_FOR_ARP_SEQUENCE_LENGTH_MENU_TITLE,
 		    [UNPATCHED_ARP_RHYTHM - unc] = STRING_FOR_ARP_RHYTHM_MENU_TITLE,
 		    [UNPATCHED_PORTAMENTO - unc] = STRING_FOR_PORTAMENTO,
+		    [UNPATCHED_PEDAL_SUSTAIN - unc] = STRING_FOR_PEDAL_SUSTAIN,
+		    [UNPATCHED_PEDAL_SOSTENUTO - unc] = STRING_FOR_PEDAL_SOSTENUTO,
 		};
 		return l10n::get(NAMES[p - unc]);
 	}
@@ -302,6 +304,12 @@ constexpr char const* paramNameForFileConst(Kind const kind, ParamType const par
 
 		case UNPATCHED_PORTAMENTO:
 			return "portamento";
+
+		case UNPATCHED_PEDAL_SUSTAIN:
+			return "pedalSustain";
+
+		case UNPATCHED_PEDAL_SOSTENUTO:
+			return "pedalSostenuto";
 
 		default:
 		    // Fall through to the other param kind handling
